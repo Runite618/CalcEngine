@@ -26,22 +26,27 @@ public class CalcEngine {
 //        char opCode = 'd';
 //        
         for(int i = 0; i < opCodes.length; i++) {
-            if(opCodes[i] == 'a')
-                results[i] = leftVals[i] + rightVals[i];
-            else if(opCodes[i] == 's')
-                results[i] = leftVals[i] - rightVals[i];
-            else if(opCodes[i] == 'd') { 
-                results[i] = rightVals[i] != 0 ? leftVals[i] / rightVals[i] : 0.0d;
+            switch (opCodes[i]) {
+                case 'a':
+                    results[i] = leftVals[i] + rightVals[i];
+                    break;
+                case 's':
+                    results[i] = leftVals[i] - rightVals[i];
+                    break;
+                case 'd':
+                    results[i] = rightVals[i] != 0 ? leftVals[i] / rightVals[i] : 0.0d;
+                    break;
     //            if(val2 != 0.0d)
     //                result = val1 / val2;
     //            else
     //                result = 0.0d;
-            }
-            else if(opCodes[i] == 'm')
-                results[i] = leftVals[i] * rightVals[i];
-            else {
-                System.out.println("Error - invalid opCode)");
-                results[i] = 0.0d;
+                case 'm':
+                    results[i] = leftVals[i] * rightVals[i];
+                    break;
+                default:
+                    System.out.println("Error - invalid opCode)");
+                    results[i] = 0.0d;
+                    break;
             }
         }
         for(double theResult : results) {
