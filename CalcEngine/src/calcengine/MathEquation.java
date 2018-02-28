@@ -12,8 +12,22 @@ package calcengine;
 public class MathEquation {
     private double leftVal;
     private double rightVal;
-    private char opCode;
+    private char opCode = 'a';
     private double result;
+    
+    public MathEquation() {
+        
+    }
+    
+    public MathEquation(char opCode) {
+        this.opCode = opCode;
+    }
+    
+    public MathEquation(char opCode, double leftVal, double rightVal) {
+        this(opCode);
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+    }
     
     public double getLeftVal() {
         return leftVal;
@@ -41,6 +55,22 @@ public class MathEquation {
     
     public double getResult() {
         return result;
+    }
+    
+    public void execute(double leftVal, double rightVal) {
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+        
+        execute();
+    }
+    
+    public void execute(int leftVal, int rightVal) {
+        this.leftVal = leftVal;
+        this.rightVal = rightVal;
+        
+        execute();
+        
+        this.result = (int)result;
     }
     
     public void execute() {
